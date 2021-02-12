@@ -1,0 +1,17 @@
+$color-text-regular: rgb(79, 77, 67);
+
+$outer-border: 2px solid rgba(56, 122, 119, 1);
+$inner-border: inset 0 0 0 2px black;
+
+%filter-common-properties {
+    font-size: 16px;
+    border: $outer-border;
+    box-shadow: $inner-border;
+    border-radius: 21px;
+    &:focus {
+        outline: none;
+    }
+    &::placeholder {
+        color: $color-text-regular;
+    }
+}

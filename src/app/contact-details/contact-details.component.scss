@@ -1,0 +1,48 @@
+@import '../../styles-common.scss';
+
+.filter__row {
+    display: flex;
+    align-items: center;
+    padding-left: 36px;
+}
+
+.details {
+    background: white;
+    border-radius: 8px;
+    margin: 1rem;
+    padding: 17px;
+    height: 100%;
+    overflow: auto;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.details__profile-picture {
+    width: 190px;
+    height: 190px;
+    border-radius: 90deg;
+    border-radius: 95px;
+    border: 2px solid grey;
+}
+
+.details__info {
+    display: flex;
+    margin-top: 0.5rem;
+}
+
+.details__row {
+    font-size: 14px;
+    margin-bottom: 0.25rem;
+}
+
+.details__row--detail {
+    text-align: right;
+    color: rgb(132, 132, 132);
+}
+
+.details__row--value {
+    text-align: left;
+    color: $color-text-regular;
+}

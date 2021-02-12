@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+    height: 100vh;
+    background: -webkit-gradient(
+        linear,
+        29.31% 15.8%,
+        68.4% 80.41%,
+        color-stop(0, rgba(33, 127, 122, 1)),
+        color-stop(1, rgba(27, 60, 107, 1))
+    );
+}
+
+* {
+    font-family: 'Open Sans', sans-serif;
+}

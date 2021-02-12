@@ -1,0 +1,86 @@
+<div class="filter">
+  <input [(ngModel)]="name" class="filter__name__input" type="text" placeholder="Name">
+  <select [(ngModel)]="city" class="filter__city__select">
+    <option value="" disabled selected>City</option>
+    <option></option>
+    <option *ngFor="let city of cities">{{city}}</option>
+  </select>
+  <span>
+    <label class="filter__checkbox">
+      <span class="filter__checkbox__input">
+        <input (click)="toggleActiveCheckbox()" type="checkbox" name="checkbox">
+        <span class="filter__checkbox__input__control">
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden="true" focusable="false">
+            <path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' />
+          </svg>
+        </span>
+      </span>
+      <span class="filter__checkbox__radio__label">Show active</span>
+    </label>
+  </span>
+  <button class="button button--filter" (click)="filterTable()">Filter</button>
+  <button class="button button--add-contact">
+    <div class="button__icon"><i class="fas fa-plus"></i></div>Add new contact
+  </button>
+</div>
+<div class="list">
+  <div class="list__details">
+    <app-contact-details [contact]="selectedContact"></app-contact-details>
+  </div>
+  <div class="list__table__container">
+    <table class="list__table" mat-table [dataSource]="contactList" matSort (matSortChange)="sortData($event)">
+
+      <ng-container matColumnDef="active">
+        <th mat-header-cell *matHeaderCellDef style="background : rgba(0, 134, 165, 1); border-top-left-radius: 8px">
+        </th>
+        <td mat-cell *matCellDef="let element;" style="width: 20px;">
+          <i *ngIf="element.active" class="far fa-eye"></i>
+          <i *ngIf="!element.active" class="far fa-eye-slash"></i>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="name" style="background : rgba(0, 134, 165, 1);"> Name
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="surname">
+        <th mat-header-cell *matHeaderCellDef style="background : rgba(3, 144, 174, 1);"> Surname </th>
+        <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef style="background : rgba(7, 153, 184, 1);"> City </th>
+        <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef style="background : rgba(13, 173, 202, 1);"> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef style="background : rgba(17, 182, 212, 1);"> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef style="background : rgba(20, 192, 221, 1); border-top-right-radius: 8px;">
+        </th>
+        <td mat-cell *matCellDef="let element" style="width: 90px;">
+          <span class="table__icon" [ngClass]="{ 'table__icon--selected': element === selectedContact }">
+            <i class="fas fa-pencil-alt"></i>
+          </span>
+          <span class="table__icon" [ngClass]="{ 'table__icon--selected': element === selectedContact }">
+            <i class="far fa-trash-alt"></i>
+          </span>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+        [ngClass]="{ 'row--selected': row === selectedContact }" (click)="selectRow(row)"></tr>
+    </table>
+  </div>
+</div>

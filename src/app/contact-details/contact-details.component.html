@@ -1,0 +1,20 @@
+<div class="details">
+    <img class="details__profile-picture" src="../../assets/userpic.jpg" alt="Profile picture">
+    <div class="details__info">
+        <div>
+            <div class="details__row details__row--detail">Name:</div>
+            <div class="details__row details__row--detail">Surname:</div>
+            <div class="details__row details__row--detail">City:</div>
+            <div class="details__row details__row--detail">Email:</div>
+            <div class="details__row details__row--detail">Phone:</div>
+        </div>
+        <div style="margin-left: 0.5rem;">
+            <div class="details__row details__row--value">{{contact.name}}</div>
+            <div class="details__row details__row--value">{{contact.surname}}</div>
+            <div class="details__row details__row--value">{{contact.city}}</div>
+            <div class="details__row details__row--value"><a href="mailto: {{contact.email}}">{{contact.email}}</a>
+            </div>
+            <div class="details__row details__row--value">{{contact.phone}}</div>
+        </div>
+    </div>
+</div>
