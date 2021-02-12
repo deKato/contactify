@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Sort } from '@angular/material/sort';
-import { Contact } from '../../models/contact';
-import { ContactsService } from '../../services/contacts.service';
+import { Contact } from '@models/contact';
+import { ContactsService } from '@services/contacts.service';
 
 @Component({
   selector: 'app-contact-list',
