@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Sort } from '@angular/material/sort';
-import { Contact } from '../models/contact';
-import { ContactsService } from '../services/contacts.service';
+import { Contact } from '../../models/contact';
+import { ContactsService } from '../../services/contacts.service';
 
 @Component({
   selector: 'app-contact-list',
@@ -19,7 +19,7 @@ export class ContactListComponent implements OnInit {
   checked = true;
   name = '';
   city = '';
-  active: boolean | undefined;
+  showActiveContactsOnly: boolean | undefined;
 
   ngOnInit(): void {
     this.getContactsFromService();
@@ -42,12 +42,12 @@ export class ContactListComponent implements OnInit {
     this.contactList = this.contactListCopy.filter((entry: Contact) => {
       return (this.name ? entry.name.toLowerCase() === this.name.toLowerCase() : true) &&
       (this.city ? entry.city.toLowerCase() === this.city.toLowerCase() : true) &&
-      (this.active ? entry.active === true : true);
+      (this.showActiveContactsOnly ? entry.active === true : true);
     });
   }
 
   toggleActiveCheckbox(): void {
-    this.active = !this.active;
+    this.showActiveContactsOnly = !this.showActiveContactsOnly;
   }
 
   sortData(sort: Sort): void {
